@@ -26,7 +26,7 @@ export const seo = {
   author: siteInfo.siteName,
   ogTitle: `${siteInfo.siteName} - Akademik Danışmanlık Hizmetleri`,
   ogDescription: "Akademik çalışmalarınızda profesyonel destek ile başarıya ulaşın",
-  ogImage: "/images/og-image.jpg",
+  ogImage: "/images/og-image.png",
   ogUrl: "https://atlasanaliz.com",
   twitterCard: "summary_large_image",
   twitterSite: "@atlasanaliz",
