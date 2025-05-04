@@ -50,7 +50,12 @@ export function Navbar() {
             <Link
               key={index}
               href={item.key === "hero" ? "/" : `/#${item.key}`}
-              className={`text-sm hover:text-black transition-colors ${isScrolled ? "text-gray-600" : "text-white"}`}
+              className={`text-sm hover:text-black font-semibold transition-colors ${isScrolled ? "text-gray-600" : "text-white"}`}
+              style={
+                isScrolled
+                  ? {}
+                  : { textShadow: "0.5px 1px 2px rgba(0, 0, 0, 0.8)" }
+              }
             >
               {item.label}
             </Link>

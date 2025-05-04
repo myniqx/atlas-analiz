@@ -20,22 +20,27 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
+        <link rel="shortcut icon" href="/favicon.ico" />
         {/* <!-- Google tag (gtag.js) --> */}
-        <Script
-          src={
-            "https://www.googletagmanager.com/gtag/js?id=" +
-            process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ
-          }
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ && (
+          <>
+            <Script
+              src={
+                "https://www.googletagmanager.com/gtag/js?id=" +
+                process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ
+              }
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ}');
           `}
-        </Script>
+            </Script>
+          </>
+        )}
       </head>
       <body className={inter.className}>
         <ThemeProvider

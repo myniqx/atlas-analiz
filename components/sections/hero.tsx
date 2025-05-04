@@ -1,6 +1,7 @@
 import { ColoredHeader } from "@/components/colored-header";
 import { Button } from "@/components/ui/button";
 import { contactInfo, hero } from "@/data/site-content";
+import { MessageCircleCode, MessageCircleQuestion } from "lucide-react";
 import Link from "next/link";
 
 export function Hero() {
@@ -10,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen pt-20 relative flex items-center overflow-hidden "
+      className="min-h-screen pt-20 relative flex items-center overflow-hidden text-shadow-xl"
     >
       {/* <YoyoVideo heroVideo={heroVideo} />
 
@@ -21,7 +22,12 @@ export function Hero() {
       {/*  <MolecularBackground />*/}
 
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-20">
-        <div className="max-w-2xl">
+        <div
+          className="max-w-2xl"
+          style={{
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+          }}
+        >
           <ColoredHeader
             h={1}
             className="text-4xl md:text-5xl font-bold mb-6 text-white"
@@ -32,7 +38,7 @@ export function Hero() {
           <div className="flex flex-row gap-6">
             <Link href="/fiyat-teklifi-alin">
               <Button className="bg-white text-black hover:bg-gray-200">
-                {content.ctaText}
+                <MessageCircleCode /> {content.ctaText}
               </Button>
             </Link>
 
@@ -42,7 +48,7 @@ export function Hero() {
               rel="noopener noreferrer"
             >
               <Button className="bg-white text-black hover:bg-gray-200">
-                {content.whatsappText}
+                <MessageCircleQuestion /> {content.whatsappText}
               </Button>
             </Link>
           </div>
