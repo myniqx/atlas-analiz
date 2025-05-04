@@ -11,8 +11,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: NextRequest) {
   const { subject, data: formData } = await request.json();
 
-  console.warn("POST", subject, formData);
-
   if (!subject || !formData) {
     return NextResponse.json(
       { error: "E-posta içeriği eksik." },
@@ -25,7 +23,7 @@ export async function POST(request: NextRequest) {
       from: "Atlas Analiz <sandbox@resend.dev>", // contactInfo.senderEmail,
       to: contactInfo.contactEmail,
       subject: subject,
-      text: JSON.stringify(formData, null, 1), // ApplicationEmail(formData as ApplicationFormData),
+      react: ApplicationEmail(formData as ApplicationFormData),
     });
 
     if (error) {

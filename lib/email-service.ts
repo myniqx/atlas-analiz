@@ -1,4 +1,3 @@
-"use server";
 
 import { ApplicationFormData } from "@/components/email-template";
 
@@ -6,8 +5,7 @@ export async function sendApplicationEmail(formData: ApplicationFormData) {
   const subject = `${formData.name} (${formData.email})`;
 
   try {
-    const result = await fetch(
-      process.env.NEXT_PUBLIC_BASE_URL + "/api/send-mail",
+    const result = await fetch("/api/send-mail",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
