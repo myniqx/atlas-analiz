@@ -1,28 +1,11 @@
 import Link from "next/link";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
 import { ColoredHeader } from "@/components/colored-header";
-import { siteInfo } from "@/data/site-content";
+import { contactInfo, footer as content, siteInfo } from "@/data/site-content";
 
-interface FooterProps {
-  content: {
-    description: string;
-    quickLinks: {
-      title: string;
-      links: {
-        label: string;
-        href: string;
-      }[];
-    };
-    copyright: string;
-  };
-  contactInfo: {
-    contactEmail: string;
-    phone: string;
-    address?: string;
-  };
-}
 
-export function Footer({ content, contactInfo }: FooterProps) {
+
+export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -93,7 +76,7 @@ export function Footer({ content, contactInfo }: FooterProps) {
                   {contactInfo.phone}
                 </a>
               </li>
-              <li>{contactInfo.address}</li>
+              {contactInfo.address && <li>{contactInfo.address}</li>}
             </ul>
           </div>
         </div>

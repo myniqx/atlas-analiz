@@ -2,6 +2,8 @@ import siteContent, { siteInfo } from "@/data/site-content";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export const config = { runtime: 'nodejs' }
+
 const transporter = nodemailer.createTransport({
   service: "Gmail", // veya başka bir e-posta servisi kullanabilirsin
   auth: {
@@ -9,13 +11,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
-
-type FormData = {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-};
 
 export async function POST(request: NextRequest) {
   const { subject, html } = await request.json();

@@ -55,6 +55,7 @@ export const pageMetadata = {
 export const contactInfo = {
   contactEmail: "info@atlasanaliz.com",
   phone: "+ 90 (540) 640 40 10",
+  address: null,
   whatsapp: {
     number: "+905406404010",
     defaultMessage:

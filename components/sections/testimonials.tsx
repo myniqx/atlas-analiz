@@ -145,12 +145,12 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="min-h-screen p-16 md:py-24"
+      className="min-h-screen p-16 md:py-24 flex items-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="container mx-auto px-4">
-        <ColoredHeader h={2} className="text-3xl font-bold text-center mb-12">
+        <ColoredHeader h={2} className="text-3xl font-bold text-center my-12">
           {content.title}
         </ColoredHeader>
 

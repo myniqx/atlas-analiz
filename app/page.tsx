@@ -8,12 +8,11 @@ import { HowWeWork } from "@/components/sections/how-we-work";
 import { Services } from "@/components/sections/services";
 import { Testimonials } from "@/components/sections/testimonials";
 import { contactInfo, faq, footer, images } from "@/data/site-content";
+export const dynamic = 'force-static'
 
 export default function Home() {
   return (
-    <main className="relative">
-      <BackgroundImage src={images.background} />
-      <Navbar key="navbar" />,
+    <>
       <Hero key="hero" />,
       {[
         <AboutUs key="about-us" />,
@@ -29,7 +28,6 @@ export default function Home() {
           {component}
         </div>
       ))}
-      <Footer content={footer} contactInfo={contactInfo} />
-    </main>
+    </>
   );
 }
