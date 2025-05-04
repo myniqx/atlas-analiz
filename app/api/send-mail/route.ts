@@ -11,7 +11,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: NextRequest) {
   const { subject, data: formData } = await request.json();
 
-  console.log("POST", subject);
+  console.warn("POST", subject, formData);
 
   if (!subject || !formData) {
     return NextResponse.json(
