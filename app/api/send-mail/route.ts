@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "sandbox@resend.dev", // contactInfo.senderEmail,
+      from: "Atlas Analiz <sandbox@resend.dev>", // contactInfo.senderEmail,
       to: contactInfo.contactEmail,
       subject: subject,
       react: ApplicationEmail(formData as ApplicationFormData),
@@ -32,6 +32,8 @@ export async function POST(request: NextRequest) {
       console.log(error);
       return NextResponse.json({ error }, { status: 500 });
     }
+
+    console.log(JSON.stringify(data, null, 1))
 
     return NextResponse.json(data);
   } catch (error) {
