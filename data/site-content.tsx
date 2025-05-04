@@ -54,7 +54,7 @@ export const pageMetadata = {
 // Used in: contact.tsx, footer.tsx
 export const contactInfo = {
   senderEmail: "info@atlasanaliz.com",
-  contactEmail: "burakokur1985@gmail.com", // "atlasakademik@gmail.com",
+  contactEmail: "atlasakademik@gmail.com",
   phone: "+ 90 (540) 640 40 10",
   address: null,
   whatsapp: {
@@ -212,35 +212,68 @@ export const testimonials = {
   title: "Müşteri Yorumları",
   items: [
     {
-      name: "Dr. Ahmet Yılmaz",
-      company: "İstanbul Üniversitesi",
-      position: "Doktora Öğrencisi",
+      name: "Ahmet Y.",
       comment:
         "Atlas Analiz ile doktora tezim için çalıştım ve sonuçtan son derece memnun kaldım. İstatistiksel analizlerde sundukları destek sayesinde karmaşık verileri anlamlandırabildim ve tezim büyük beğeni topladı.",
+      service: "İstatistiksel Analiz",
     },
     {
-      name: "Ayşe Kaya",
-      company: "Ankara Üniversitesi",
-      position: "Yüksek Lisans Öğrencisi",
+      name: "Ayşe K.",
       comment:
         "Yüksek lisans tezimin literatür taraması aşamasında Atlas Analiz'den aldığım destek paha biçilemezdi. Kapsamlı ve sistematik bir literatür taraması sayesinde araştırmamı sağlam temeller üzerine inşa edebildim.",
+      service: "Literatür Taraması",
     },
     {
-      name: "Prof. Dr. Mehmet Demir",
-      company: "Boğaziçi Üniversitesi",
-      position: "Akademisyen",
+      name: "Mehmet D.",
       comment:
         "Uluslararası bir dergide yayınlanacak makalem için Atlas Analiz'in akademik çeviri hizmetinden yararlandım. Terminolojiye hakimiyetleri ve profesyonel yaklaşımları sayesinde makalem prestijli bir dergide yayınlanmaya hak kazandı.",
+      service: "Akademik Çeviri",
     },
     {
-      name: "Zeynep Şahin",
-      company: "Oxford University",
-      position: "Doktora Adayı",
+      name: "Zeynep Ş.",
       comment:
         "Yurt dışı doktora başvurularım için Essay Editing hizmetlerinden faydalandım. İngilizce metinlerimin akademik standartlara uygun hale getirilmesi sayesinde Oxford'dan kabul aldım. Atlas Analiz ekibine minnettarım.",
+      service: "Essay Editing",
+    },
+    {
+      name: "Emre A.",
+      comment:
+        "Veri analizi sürecinde Atlas Analiz'den aldığım danışmanlık, araştırmamın yönünü belirlememde çok etkili oldu. Tez savunmamda jüri üyelerinden olumlu yorumlar aldım.",
+      service: "Tez Danışmanlığı",
+    },
+    {
+      name: "Selin T.",
+      comment:
+        "Makale istatistiklerim için destek aldım. Detaylara verdikleri önem sayesinde sonuçlarım daha güvenilir hale geldi. Akademik kariyerimde bana büyük katkı sağladılar.",
+      service: "Makale & Yayın Desteği",
+    },
+    {
+      name: "Barış G.",
+      comment:
+        "Araştırmam için hipotez testi aşamasında sağladıkları danışmanlık ile süreci çok daha hızlı tamamladım. Profesyonel destekleri için teşekkür ederim.",
+      service: "Araştırma Metodolojisi",
+    },
+    {
+      name: "Elif M.",
+      comment:
+        "Atlas Analiz ile çalışmak beni çok rahatlattı. SPSS analizlerinde detaylı açıklamaları ve yorumları ile sonuçları çok iyi sunabildim.",
+      service: "İstatistiksel Analiz",
+    },
+    {
+      name: "Canan Ö.",
+      comment:
+        "Akademik yazım sürecinde sağladıkları editing hizmeti ile metinlerim daha akıcı ve akademik hale geldi. Herkese öneririm.",
+      service: "Essay Editing",
+    },
+    {
+      name: "Burak S.",
+      comment:
+        "Lisans tezimde veri toplama ve analiz sürecinde destek aldım. Zamanında ve etkili geri dönüşleri ile çalışmam başarıyla tamamlandı.",
+      service: "Tez Danışmanlığı",
     },
   ],
 };
+
 
 // Used in: faq.tsx
 export const faq = {

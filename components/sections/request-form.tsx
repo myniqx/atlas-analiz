@@ -9,7 +9,7 @@ import { sendApplicationEmail } from "@/lib/email-service";
 import { useState } from "react";
 
 import { toast } from "sonner";
-const fakeData = true;
+const fakeData = false;
 
 export const RequestForm = () => {
   const [formData, setFormData] = useState(() => {

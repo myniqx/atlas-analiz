@@ -130,7 +130,7 @@ export function Testimonials() {
             {item.name}
           </p>
           <p className="text-sm text-gray-500">
-            {item.position}, {item.company}
+            {item.service}
           </p>
         </div>
       </div>
