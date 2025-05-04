@@ -53,7 +53,8 @@ export const pageMetadata = {
 
 // Used in: contact.tsx, footer.tsx
 export const contactInfo = {
-  contactEmail: "info@atlasanaliz.com",
+  senderEmail: "info@atlasanaliz.com",
+  contactEmail: "atlasakademik@gmail.com",
   phone: "+ 90 (540) 640 40 10",
   address: null,
   whatsapp: {

@@ -47,7 +47,6 @@ function formatDate(dateString: string): string {
 }
 
 export async function sendApplicationEmail(formData: ApplicationFormData) {
-  const recipientEmail = contactInfo.contactEmail;
   const subject = `${formData.name} (${formData.email})`;
 
   // Create HTML email content
@@ -186,28 +185,14 @@ export async function sendApplicationEmail(formData: ApplicationFormData) {
     </html>
   `;
 
-  // In development mode, log the email instead of sending it
-  if (inDevelopment) {
-    console.log(
-      "Development mode: Email would be sent with the following details:",
-    );
-    console.log(`To: ${recipientEmail}`);
-    console.log(`Subject: ${subject}`);
-    console.log("HTML Content:", htmlContent);
-
-    // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return { success: true };
-  }
-
   try {
-    const result = await fetch("/api/send-mail", {
+    const result = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/send-mail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ subject, html: htmlContent }),
     });
 
-    if (!result.ok) throw new Error("Failed to send email");
+    if (!result.ok) throw new Error("Failed to send email " + await result.json());
 
     return { success: true };
   } catch (error) {
