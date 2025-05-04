@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/favicon.ico" />
         {/* <!-- Google tag (gtag.js) --> */}
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ && (
           <>

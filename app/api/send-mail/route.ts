@@ -1,35 +1,31 @@
+import ApplicationEmail, { ApplicationFormData } from "@/components/email-template";
 import siteContent, { contactInfo, siteInfo } from "@/data/site-content";
 import { NextRequest, NextResponse } from "next/server";
+import React from "react";
 
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
-  const { subject, html } = await request.json();
+  const { subject, data: formData } = await request.json();
   
   console.log("POST", subject);
 
-  if (!subject || !html) {
+  if (!subject || !formData) {
     return NextResponse.json(
       { error: "E-posta içeriği eksik." },
       { status: 500 },
     );
   }
 
-  const mailOptions = {
-    from: 'sandbox@resend.dev', // contactInfo.senderEmail,
-    to: contactInfo.contactEmail,
-    subject: subject,
-    text: html,
-  };
 
   try {
     const { data, error } = await resend.emails.send({
-      from: mailOptions.from,
-      to: [mailOptions.to],
-      subject: mailOptions.subject,
-      html: mailOptions.text
+      from: 'sandbox@resend.dev', // contactInfo.senderEmail,
+      to: contactInfo.contactEmail,
+      subject: subject,
+      react: ApplicationEmail(formData as ApplicationFormData),
     });
 
     if (error) {

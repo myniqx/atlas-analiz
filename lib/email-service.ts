@@ -49,6 +49,7 @@ function formatDate(dateString: string): string {
 export async function sendApplicationEmail(formData: ApplicationFormData) {
   const subject = `${formData.name} (${formData.email})`;
 
+  /*
   // Create HTML email content
   const htmlContent = `
     <!DOCTYPE html>
@@ -183,13 +184,13 @@ export async function sendApplicationEmail(formData: ApplicationFormData) {
       </div>
     </body>
     </html>
-  `;
+  `; */
 
   try {
     const result = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/send-mail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ subject, html: htmlContent }),
+      body: JSON.stringify({ subject, data: formData }),
     });
 
     if (!result.ok) throw new Error("Failed to send email " + await result.json());
