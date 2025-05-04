@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       from: "Atlas Analiz <sandbox@resend.dev>", // contactInfo.senderEmail,
       to: contactInfo.contactEmail,
       subject: subject,
-      react: ApplicationEmail(formData as ApplicationFormData),
+      text: JSON.stringify(formData, null, 1), // ApplicationEmail(formData as ApplicationFormData),
     });
 
     if (error) {
