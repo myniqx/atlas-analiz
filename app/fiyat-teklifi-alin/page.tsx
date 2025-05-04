@@ -13,23 +13,43 @@ import { Footer } from "@/components/footer";
 import { BackgroundImage } from "@/components/background-image";
 import { ColoredHeader } from "@/components/colored-header";
 import { images, footer, contactInfo } from "@/data/site-content";
-import { toast } from "@/components/ui/use-toast";
-import { Toaster } from "@/components/ui/toaster";
 import { sendApplicationEmail } from "@/lib/email-service";
 
+import { toast } from "sonner"
+
+const fakeData = true
+
 export default function PricePage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    department: "",
-    subject: "",
-    level: "lisans",
-    pageCount: "",
-    dueDate: "",
-    language: "",
-    method: "",
-    notes: "",
+  const [formData, setFormData] = useState(() => {
+    if (fakeData) {
+      return {
+        name: "John Doe",
+        phone: "1234567890",
+        email: "john.doe@example.com",
+        department: "Computer Science",
+        subject: "AI Research",
+        level: "lisans",
+        pageCount: "100",
+        dueDate: "2023-12-31",
+        language: "English",
+        method: "Qualitative",
+        notes: "Sample notes for testing",
+      };
+    } else {
+      return {
+        name: "",
+        phone: "",
+        email: "",
+        department: "",
+        subject: "",
+        level: "lisans",
+        pageCount: "",
+        dueDate: "",
+        language: "",
+        method: "",
+        notes: "",
+      };
+    }
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,12 +75,14 @@ export default function PricePage() {
 
       if (result.success) {
         // Show success message
-        toast({
-          title: "Başvurunuz Alındı",
-          description:
-            "Başvurunuz email olarak gönderildi. En kısa sürede sizinle iletişime geçeceğiz.",
-          duration: 5000,
-        });
+        toast.success(
+          "Başvurunuz Alındı",
+          {
+            description:
+              "Başvurunuz email olarak gönderildi. En kısa sürede sizinle iletişime geçeceğiz.",
+            duration: 5000,
+          }
+        )
 
         // Reset form
         setFormData({
@@ -81,13 +103,14 @@ export default function PricePage() {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast({
-        title: "Hata",
-        description:
-          "Başvurunuz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-        variant: "destructive",
-        duration: 5000,
-      });
+      toast.error(
+        "Teklif gönderilirken hata oluştu.",
+        {
+          description:
+            "Başvurunuz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+          duration: 5000,
+        }
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -326,7 +349,6 @@ export default function PricePage() {
       </div>
 
       <Footer content={footer} contactInfo={contactInfo} />
-      <Toaster />
     </main>
   );
 }
