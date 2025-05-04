@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
   const mailOptions = {
     from: 'sandbox@resend.dev', // contactInfo.senderEmail,
-    to: "burakokur1985@gmail.com", // contactInfo.contactEmail,
+    to: contactInfo.contactEmail,
     subject: subject,
     text: html,
   };
