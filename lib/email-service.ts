@@ -16,7 +16,7 @@ export async function sendApplicationEmail(formData: ApplicationFormData) {
     );
 
     if (!result.ok)
-      throw new Error("Failed to send email " + (await result.json()));
+      throw new Error("Failed to send email " + (await result.text()));
 
     return { success: true };
   } catch (error) {
