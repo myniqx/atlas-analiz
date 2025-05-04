@@ -1,75 +1,71 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { ImageFallback } from "@/components/image-fallback"
-import { User, ChevronLeft, ChevronRight } from "lucide-react"
-import { ColoredHeader } from "@/components/colored-header"
-import { siteColors } from "@/data/site-content"
+import { useState, useEffect } from "react";
+import { ImageFallback } from "@/components/image-fallback";
+import { User, ChevronLeft, ChevronRight } from "lucide-react";
+import { ColoredHeader } from "@/components/colored-header";
+import { siteColors, testimonials } from "@/data/site-content";
 
-interface TestimonialsProps {
-  content: {
-    title: string
-    items: {
-      name: string
-      company: string
-      position: string
-      avatar?: string
-      comment: string
-    }[]
-  }
-}
-
-export function Testimonials({ content }: TestimonialsProps) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [isAutoplay, setIsAutoplay] = useState(true)
-  const [isMobile, setIsMobile] = useState(false)
+export function Testimonials() {
+  const content = testimonials;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Check if mobile on mount and on resize
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
     // Initial check
-    checkIfMobile()
+    checkIfMobile();
 
     // Add event listener
-    window.addEventListener("resize", checkIfMobile)
+    window.addEventListener("resize", checkIfMobile);
 
     // Cleanup
-    return () => window.removeEventListener("resize", checkIfMobile)
-  }, [])
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   // Autoplay functionality
   useEffect(() => {
-    if (!isAutoplay) return
+    if (!isAutoplay) return;
 
     const interval = setInterval(() => {
       setActiveIndex(
-        (current) => (current + 1) % (isMobile ? content.items.length : Math.ceil(content.items.length / 2)),
-      )
-    }, 5000)
+        (current) =>
+          (current + 1) %
+          (isMobile
+            ? content.items.length
+            : Math.ceil(content.items.length / 2)),
+      );
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [isAutoplay, content.items.length, isMobile])
+    return () => clearInterval(interval);
+  }, [isAutoplay, content.items.length, isMobile]);
 
   // Pause autoplay on hover
-  const handleMouseEnter = () => setIsAutoplay(false)
-  const handleMouseLeave = () => setIsAutoplay(true)
+  const handleMouseEnter = () => setIsAutoplay(false);
+  const handleMouseLeave = () => setIsAutoplay(true);
 
   const goToPrevious = () => {
     setActiveIndex((current) => {
-      const totalSlides = isMobile ? content.items.length : Math.ceil(content.items.length / 2)
-      return (current - 1 + totalSlides) % totalSlides
-    })
-  }
+      const totalSlides = isMobile
+        ? content.items.length
+        : Math.ceil(content.items.length / 2);
+      return (current - 1 + totalSlides) % totalSlides;
+    });
+  };
 
   const goToNext = () => {
     setActiveIndex((current) => {
-      const totalSlides = isMobile ? content.items.length : Math.ceil(content.items.length / 2)
-      return (current + 1) % totalSlides
-    })
-  }
+      const totalSlides = isMobile
+        ? content.items.length
+        : Math.ceil(content.items.length / 2);
+      return (current + 1) % totalSlides;
+    });
+  };
 
   // Prepare testimonials based on device
   const prepareTestimonials = () => {
@@ -79,29 +75,29 @@ export function Testimonials({ content }: TestimonialsProps) {
         <div key={index} className="w-full flex-shrink-0 px-4">
           {renderTestimonial(item)}
         </div>
-      ))
+      ));
     } else {
       // For desktop, show two testimonials per slide
-      const pairs = []
+      const pairs = [];
       for (let i = 0; i < content.items.length; i += 2) {
-        const pair = [content.items[i]]
+        const pair = [content.items[i]];
         if (i + 1 < content.items.length) {
-          pair.push(content.items[i + 1])
+          pair.push(content.items[i + 1]);
         }
-        pairs.push(pair)
+        pairs.push(pair);
       }
 
       return pairs.map((pair, pairIndex) => (
         <div key={pairIndex} className="w-full flex-shrink-0 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
             {pair.map((item, itemIndex) => (
               <div key={itemIndex}>{renderTestimonial(item)}</div>
             ))}
           </div>
         </div>
-      ))
+      ));
     }
-  }
+  };
 
   // Render a single testimonial
   const renderTestimonial = (item: (typeof content.items)[0]) => (
@@ -139,15 +135,17 @@ export function Testimonials({ content }: TestimonialsProps) {
         </div>
       </div>
     </>
-  )
+  );
 
   // Calculate total slides
-  const totalSlides = isMobile ? content.items.length : Math.ceil(content.items.length / 2)
+  const totalSlides = isMobile
+    ? content.items.length
+    : Math.ceil(content.items.length / 2);
 
   return (
     <section
       id="testimonials"
-      className="min-h-screen py-16 md:py-24 bg-gray-50"
+      className="min-h-screen p-16 md:py-24"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -198,5 +196,5 @@ export function Testimonials({ content }: TestimonialsProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

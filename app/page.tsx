@@ -1,40 +1,35 @@
-import { Navbar } from "@/components/navbar"
-import { Hero } from "@/components/sections/hero"
-import { AboutUs } from "@/components/sections/about-us"
-import { Services } from "@/components/sections/services"
-import { HowWeWork } from "@/components/sections/how-we-work"
-import { Testimonials } from "@/components/sections/testimonials"
-import { Faq } from "@/components/sections/faq"
-import { Contact } from "@/components/sections/contact"
-import { Footer } from "@/components/footer"
-import { BackgroundImage } from "@/components/background-image"
-import {
-  images,
-  hero,
-  aboutUs,
-  services,
-  howWeWork,
-  testimonials,
-  faq,
-  contact,
-  footer,
-  contactInfo,
-  videos,
-} from "@/data/site-content"
+import { BackgroundImage } from "@/components/background-image";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { AboutUs } from "@/components/sections/about-us";
+import { Faq } from "@/components/sections/faq";
+import { Hero } from "@/components/sections/hero";
+import { HowWeWork } from "@/components/sections/how-we-work";
+import { Services } from "@/components/sections/services";
+import { Testimonials } from "@/components/sections/testimonials";
+import { contactInfo, faq, footer, images } from "@/data/site-content";
 
 export default function Home() {
   return (
     <main className="relative">
       <BackgroundImage src={images.background} />
-      <Navbar />
-      <Hero content={hero} heroImage={images.hero} heroVideo={videos.video} />
-      <AboutUs content={aboutUs} aboutImage={images.aboutUs} />
-      <Services content={services} />
-      <HowWeWork content={howWeWork} />
-      <Testimonials content={testimonials} />
-      <Faq content={faq} />
-      <Contact content={contact} contactInfo={contactInfo} />
+      <Navbar key="navbar" />,
+      <Hero key="hero" />,
+      {[
+        <AboutUs key="about-us" />,
+        <Services key="services" />,
+        <HowWeWork key="how-we-work" />,
+        <Testimonials key="testimonials" />,
+        <Faq key="faq" content={faq} />,
+      ].map((component, index) => (
+        <div
+          key={index}
+          className={`p-4 ${index % 2 === 0 ? "bg-gray-50" : "bg-white/70"}`}
+        >
+          {component}
+        </div>
+      ))}
       <Footer content={footer} contactInfo={contactInfo} />
     </main>
-  )
+  );
 }

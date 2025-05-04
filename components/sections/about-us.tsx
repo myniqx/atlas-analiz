@@ -1,29 +1,23 @@
-import { ImageFallback } from "@/components/image-fallback"
-import { ColoredHeader } from "@/components/colored-header"
-import { Search, Shield, Users } from "lucide-react"
+import { ImageFallback } from "@/components/image-fallback";
+import { ColoredHeader } from "@/components/colored-header";
+import { Search, Shield, Users } from "lucide-react";
+import { aboutUs, images } from "@/data/site-content";
 
-interface AboutUsProps {
-  content: {
-    title: string
-    description: string
-    features: {
-      title: string
-      description: string
-    }[]
-  }
-  aboutImage: string
-}
-
-export function AboutUs({ content, aboutImage }: AboutUsProps) {
+export function AboutUs() {
+  const content = aboutUs;
+  const aboutImage = images.aboutUs;
   // Array of icons to use for features
   const icons = [
     <Search key={0} className="h-6 w-6 text-black flex-shrink-0" />,
     <Shield key={1} className="h-6 w-6 text-black flex-shrink-0" />,
     <Users key={2} className="h-6 w-6 text-black flex-shrink-0" />,
-  ]
+  ];
 
   return (
-    <section id="about-us" className="min-h-screen flex items-center justify-center">
+    <section
+      id="about-us"
+      className="min-h-screen flex items-center justify-center"
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
@@ -50,7 +44,9 @@ export function AboutUs({ content, aboutImage }: AboutUsProps) {
                     <ColoredHeader h={3} className="font-medium">
                       {feature.title}
                     </ColoredHeader>
-                    <p className="text-gray-600 text-sm">{feature.description}</p>
+                    <p className="text-gray-600 text-sm">
+                      {feature.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -59,5 +55,5 @@ export function AboutUs({ content, aboutImage }: AboutUsProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

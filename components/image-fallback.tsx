@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image, { type ImageProps } from "next/image"
-import { ImageIcon } from "lucide-react"
+import { useState } from "react";
+import Image, { type ImageProps } from "next/image";
+import { ImageIcon } from "lucide-react";
 
 type ImageFallbackProps = ImageProps & {
-  fallbackClassName?: string
-}
+  fallbackClassName?: string;
+};
 
-export function ImageFallback({ src, alt, fallbackClassName, className, ...props }: ImageFallbackProps) {
-  const [error, setError] = useState(false)
+export function ImageFallback({
+  src,
+  alt,
+  fallbackClassName,
+  className,
+  ...props
+}: ImageFallbackProps) {
+  const [error, setError] = useState(false);
 
   return error ? (
     <div
@@ -19,6 +25,12 @@ export function ImageFallback({ src, alt, fallbackClassName, className, ...props
       <ImageIcon className="h-10 w-10 text-gray-400" />
     </div>
   ) : (
-    <Image src={src || "/placeholder.svg"} alt={alt} className={className} onError={() => setError(true)} {...props} />
-  )
+    <Image
+      src={src || "/placeholder.svg"}
+      alt={alt}
+      className={className}
+      onError={() => setError(true)}
+      {...props}
+    />
+  );
 }

@@ -1,47 +1,54 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { seo } from "@/data/site-content"
+import { Chat } from "@/components/chat";
+import { ThemeProvider } from "@/components/theme-provider";
+import { contactInfo, pageMetadata } from "@/data/site-content";
+import { createMetadata } from "@/lib/metadata";
+import { Inter } from "next/font/google";
+import Script from "next/script";
+import type React from "react";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: seo.title,
-  description: seo.description,
-  keywords: seo.keywords,
-  authors: [{ name: seo.author }],
-  openGraph: {
-    title: seo.ogTitle,
-    description: seo.ogDescription,
-    images: [seo.ogImage],
-    url: seo.ogUrl,
-    type: "website",
-  },
-  twitter: {
-    card: seo.twitterCard,
-    site: seo.twitterSite,
-    creator: seo.twitterCreator,
-  },
-  alternates: {
-    canonical: seo.canonicalUrl,
-  },
-    generator: 'v0.dev'
-}
+export const metadata = createMetadata(pageMetadata.home);
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
+  const whatsapp = contactInfo.whatsapp;
   return (
     <html lang="tr" suppressHydrationWarning>
+      <head>
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script
+          src={
+            "https://www.googletagmanager.com/gtag/js?id=" +
+            process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ
+          }
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ}');
+          `}
+        </Script>
+      </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
+
+          <Chat />
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

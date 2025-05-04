@@ -1,19 +1,19 @@
-"use server"
+"use server";
 
-import { inDevelopment } from "./utils"
+import { inDevelopment } from "./utils";
 
 interface EmailData {
-  name: string
-  email: string
-  message: string
+  name: string;
+  email: string;
+  message: string;
 }
 
 export async function sendContactEmail(data: EmailData, contactEmail: string) {
   if (inDevelopment) {
     // Simulating email sending in development
-    console.log("Development mode: Email would be sent with data:", data)
-    console.log("Contact email from site content:", contactEmail)
-    return { success: true }
+    console.log("Development mode: Email would be sent with data:", data);
+    console.log("Contact email from site content:", contactEmail);
+    return { success: true };
   }
 
   try {
@@ -33,11 +33,11 @@ export async function sendContactEmail(data: EmailData, contactEmail: string) {
     // if (!response.ok) throw new Error('Failed to send email');
 
     // For now, we'll just simulate a successful response
-    await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate network delay
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
 
-    return { success: true }
+    return { success: true };
   } catch (error) {
-    console.error("Error sending email:", error)
-    throw new Error("Failed to send email")
+    console.error("Error sending email:", error);
+    throw new Error("Failed to send email");
   }
 }

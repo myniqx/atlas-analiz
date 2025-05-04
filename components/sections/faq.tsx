@@ -1,15 +1,20 @@
-"use client"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { ColoredHeader } from "@/components/colored-header"
+"use client";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { ColoredHeader } from "@/components/colored-header";
 
 interface FaqProps {
   content: {
-    title: string
+    title: string;
     questions: {
-      question: string
-      answer: string
-    }[]
-  }
+      question: string;
+      answer: string;
+    }[];
+  };
 }
 
 export function Faq({ content }: FaqProps) {
@@ -23,12 +28,14 @@ export function Faq({ content }: FaqProps) {
         <Accordion type="single" collapsible className="w-full">
           {content.questions.map((item, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
+              <AccordionTrigger className="text-left">
+                {item.question}
+              </AccordionTrigger>
               <AccordionContent>{item.answer}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </div>
     </section>
-  )
+  );
 }

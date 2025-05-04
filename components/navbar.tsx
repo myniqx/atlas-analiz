@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { navigation, siteInfo, siteColors } from "@/data/site-content"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { navigation, siteInfo, siteColors } from "@/data/site-content";
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { navItems } = navigation
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { navItems } = navigation;
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+      setIsScrolled(window.scrollY > 10);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
@@ -37,7 +37,9 @@ export function Navbar() {
             height={32}
             className="rounded-full shadow-xl"
           />
-          <span className={`font-bold text-xl ${isScrolled || isMenuOpen ? "text-black" : "text-white"}`}>
+          <span
+            className={`font-bold text-xl ${isScrolled || isMenuOpen ? "text-black" : "text-white"}`}
+          >
             {siteInfo.siteName}
           </span>
         </Link>
@@ -47,22 +49,24 @@ export function Navbar() {
           {navItems.map((item, index) => (
             <Link
               key={index}
-              href={`#${item.key}`}
+              href={item.key === "hero" ? "/" : `/#${item.key}`}
               className={`text-sm hover:text-black transition-colors ${isScrolled ? "text-gray-600" : "text-white"}`}
             >
               {item.label}
             </Link>
           ))}
-          <Button
-            variant="default"
-            style={{
-              backgroundColor: isScrolled ? siteColors.accent : "white",
-              color: isScrolled ? "white" : "black",
-            }}
-            className="hover:opacity-90"
-          >
-            {navigation.contactButton}
-          </Button>
+          <Link href="/fiyat-teklifi-alin">
+            <Button
+              variant="default"
+              style={{
+                backgroundColor: isScrolled ? siteColors.accent : "white",
+                color: isScrolled ? "white" : "black",
+              }}
+              className="hover:opacity-90"
+            >
+              {navigation.contactButton}
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -74,7 +78,10 @@ export function Navbar() {
           {isMenuOpen ? (
             <X size={24} className="text-black" />
           ) : (
-            <Menu size={24} className={isScrolled ? "text-black" : "text-white"} />
+            <Menu
+              size={24}
+              className={isScrolled ? "text-black" : "text-white"}
+            />
           )}
         </button>
       </div>
@@ -86,24 +93,28 @@ export function Navbar() {
             {navItems.map((item, index) => (
               <Link
                 key={index}
-                href={`#${item.key}`}
+                href={item.key === "hero" ? "/" : `/#${item.key}`}
                 className="text-gray-600 hover:text-black transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <Button
-              variant="default"
-              style={{ backgroundColor: siteColors.accent }}
-              className="w-full hover:opacity-90"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {navigation.contactButton}
-            </Button>
+            <Link href="/fiyat-teklifi-alin">
+              <Button
+                variant="default"
+                style={{
+                  backgroundColor: isScrolled ? siteColors.accent : "white",
+                  color: isScrolled ? "white" : "black",
+                }}
+                className="hover:opacity-90"
+              >
+                {navigation.contactButton}
+              </Button>
+            </Link>
           </div>
         </div>
       )}
     </nav>
-  )
+  );
 }

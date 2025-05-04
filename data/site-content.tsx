@@ -3,7 +3,7 @@ export const siteColors = {
   primary: "#000000", // Black
   secondary: "#FFFFFF", // White
   accent: "#00205B", // Navy Blue
-}
+};
 
 // Used in: layout.tsx, navbar.tsx, footer.tsx
 export const siteInfo = {
@@ -14,10 +14,11 @@ export const siteInfo = {
   primaryColor: siteColors.primary,
   secondaryColor: siteColors.secondary,
   accentColor: siteColors.accent,
-}
+};
 
 // Used in: layout.tsx
 export const seo = {
+  siteName: siteInfo.siteName,
   title: `${siteInfo.siteName} - Akademik Danışmanlık Hizmetleri`,
   description:
     "Tez, makale ve akademik çalışmalarınız için profesyonel danışmanlık hizmetleri sunuyoruz. Akademik başarınızı bir üst seviyeye taşıyın.",
@@ -25,14 +26,30 @@ export const seo = {
     "tez danışmanlığı, makale yazımı, istatistiksel analiz, akademik çeviri, intihal kontrolü, literatür taraması",
   author: siteInfo.siteName,
   ogTitle: `${siteInfo.siteName} - Akademik Danışmanlık Hizmetleri`,
-  ogDescription: "Akademik çalışmalarınızda profesyonel destek ile başarıya ulaşın",
+  ogDescription:
+    "Akademik çalışmalarınızda profesyonel destek ile başarıya ulaşın",
   ogImage: "/images/og-image.png",
   ogUrl: "https://atlasanaliz.com",
   twitterCard: "summary_large_image",
   twitterSite: "@atlasanaliz",
   twitterCreator: "@atlasanaliz",
   canonicalUrl: "https://atlasanaliz.com",
-}
+  locale: "tr-TR",
+  type: "website",
+};
+
+// Add page-specific metadata
+export const pageMetadata = {
+  home: {
+    title: seo.title,
+    description: seo.description,
+  },
+  fiyat: {
+    title: `Hizmet Başvuru Formu | ${siteInfo.siteName}`,
+    description: `${siteInfo.siteName} akademik danışmanlık hizmetleri için başvuru formu. Tez, makale ve akademik çalışmalarınız için profesyonel destek alın.`,
+  },
+  // Add other pages as needed
+};
 
 // Used in: contact.tsx, footer.tsx
 export const contactInfo = {
@@ -40,26 +57,26 @@ export const contactInfo = {
   phone: "+ 90 (540) 640 40 10",
   whatsapp: {
     number: "+905406404010",
-    defaultMessage: "Merhaba, Atlas Analiz'den akademik danışmanlık hizmetleriniz hakkında bilgi almak istiyorum.",
+    defaultMessage:
+      "Merhaba, Atlas Analiz'den akademik danışmanlık hizmetleriniz hakkında bilgi almak istiyorum.",
   },
   socialMedia: {
     linkedin: "https://linkedin.com/company/atlasanaliz",
     twitter: "https://twitter.com/atlasanaliz",
     instagram: "https://instagram.com/atlasanaliz",
   },
-}
+};
 
 // Used in: page.tsx, background-image.tsx, hero.tsx, about-us.tsx
 export const images = {
   background: "/images/background.jpg",
   hero: "/images/hero-image.jpg",
   aboutUs: "/images/about-us.jpg",
-}
+};
 
 export const videos = {
   video: "/videos/hero-video.mp4",
-}
-    
+};
 
 // Used in: navbar.tsx
 export const navigation = {
@@ -71,15 +88,16 @@ export const navigation = {
     { key: "faq", label: "SSS" },
   ],
   contactButton: "İletişime Geçin",
-}
+};
 
 // Used in: hero.tsx
 export const hero = {
   title: "Akademik Başarınız İçin Profesyonel Destek",
   description:
     "Tez, makale ve akademik çalışmalarınızda uzman kadromuzla yanınızdayız. Bilimsel araştırmalarınızı bir üst seviyeye taşıyoruz.",
-  ctaText: "Ücretsiz Danışmanlık Alın",
-}
+  ctaText: "Ücretsiz fiyat teklifi alın",
+  whatsappText: "WhatsApp'tan bize ulaşın",
+};
 
 // Used in: about-us.tsx
 export const aboutUs = {
@@ -103,7 +121,7 @@ export const aboutUs = {
         "Her projeyi benzersiz kabul ediyor, ihtiyaçlarınıza özel çözümler geliştirerek akademik hedeflerinize ulaşmanızı sağlıyoruz.",
     },
   ],
-}
+};
 
 // Used in: services.tsx
 export const services = {
@@ -158,7 +176,7 @@ export const services = {
         "Araştırma projeniz için en uygun metodolojinin belirlenmesi ve uygulanması konusunda uzman danışmanlık hizmeti veriyoruz. Nitel, nicel veya karma yöntem tasarımlarında, veri toplama araçlarının geliştirilmesinden örneklem seçimine kadar tüm süreçlerde rehberlik ediyoruz. Araştırmanızın bilimsel geçerliliğini ve güvenilirliğini artıracak metodolojik yaklaşımlar sunuyoruz.",
     },
   ],
-}
+};
 
 // Used in: how-we-work.tsx
 export const howWeWork = {
@@ -166,22 +184,26 @@ export const howWeWork = {
   steps: [
     {
       title: "İhtiyaç Analizi",
-      description: "Akademik çalışmanızın kapsamını ve ihtiyaçlarınızı detaylı olarak değerlendiriyoruz.",
+      description:
+        "Akademik çalışmanızın kapsamını ve ihtiyaçlarınızı detaylı olarak değerlendiriyoruz.",
     },
     {
       title: "Metodoloji Belirleme",
-      description: "Çalışmanız için en uygun yöntem ve araçları belirleyerek bir yol haritası oluşturuyoruz.",
+      description:
+        "Çalışmanız için en uygun yöntem ve araçları belirleyerek bir yol haritası oluşturuyoruz.",
     },
     {
       title: "Uygulama",
-      description: "Belirlenen metodoloji doğrultusunda akademik çalışmanızı titizlikle yürütüyoruz.",
+      description:
+        "Belirlenen metodoloji doğrultusunda akademik çalışmanızı titizlikle yürütüyoruz.",
     },
     {
       title: "Kalite Kontrolü",
-      description: "Tüm çalışmalarımızı akademik standartlara uygunluk açısından detaylı kontrolden geçiriyoruz.",
+      description:
+        "Tüm çalışmalarımızı akademik standartlara uygunluk açısından detaylı kontrolden geçiriyoruz.",
     },
   ],
-}
+};
 
 // Used in: testimonials.tsx
 export const testimonials = {
@@ -216,7 +238,7 @@ export const testimonials = {
         "Yurt dışı doktora başvurularım için Essay Editing hizmetlerinden faydalandım. İngilizce metinlerimin akademik standartlara uygun hale getirilmesi sayesinde Oxford'dan kabul aldım. Atlas Analiz ekibine minnettarım.",
     },
   ],
-}
+};
 
 // Used in: faq.tsx
 export const faq = {
@@ -228,7 +250,8 @@ export const faq = {
         "Kesinlikle evet. Atlas Analiz olarak tüm hizmetlerimizde akademik etik kurallarını ve dürüstlük ilkelerini ön planda tutuyoruz. Danışmanlık hizmetlerimiz, öğrencilerin ve araştırmacıların kendi çalışmalarını daha iyi yapabilmeleri için rehberlik etmeyi amaçlar. İntihal veya akademik usulsüzlük teşkil edecek hiçbir hizmet sunmuyoruz.",
     },
     {
-      question: "Tez danışmanlığı sürecinde hangi aşamalarda destek alabiliyorum?",
+      question:
+        "Tez danışmanlığı sürecinde hangi aşamalarda destek alabiliyorum?",
       answer:
         "Tez sürecinin her aşamasında destek sunuyoruz: Konu seçimi ve daraltılması, literatür taraması, metodoloji belirleme, veri toplama araçları geliştirme, veri analizi, bulguların yorumlanması ve tezin yazım aşaması. İhtiyacınıza göre tüm süreç boyunca veya sadece belirli aşamalarda danışmanlık hizmeti alabilirsiniz.",
     },
@@ -263,7 +286,7 @@ export const faq = {
         "Müşterilerimizin gizliliği bizim için son derece önemlidir. Tüm projelerimizde gizlilik sözleşmesi imzalıyor ve paylaşılan tüm bilgilerin kesinlikle gizli tutulacağını garanti ediyoruz. Çalışmalarınız ve kişisel bilgileriniz hiçbir şekilde üçüncü taraflarla paylaşılmaz.",
     },
   ],
-}
+};
 
 // Used in: contact.tsx
 export const contact = {
@@ -274,13 +297,16 @@ export const contact = {
   formEmail: "E-posta Adresiniz",
   formMessage: "Mesajınız",
   formButton: "Gönder",
-  successMessage: "Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.",
-  errorMessage: "Mesajınız gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-}
+  successMessage:
+    "Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.",
+  errorMessage:
+    "Mesajınız gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+};
 
 // Used in: footer.tsx
 export const footer = {
-  description: "Akademik danışmanlık hizmetleri ile bilimsel çalışmalarınızda yanınızdayız.",
+  description:
+    "Akademik danışmanlık hizmetleri ile bilimsel çalışmalarınızda yanınızdayız.",
   quickLinks: {
     title: "Hızlı Bağlantılar",
     links: [
@@ -292,12 +318,12 @@ export const footer = {
     ],
   },
   copyright: "Tüm hakları saklıdır.",
-}
+};
 
 // Function to colorize the first letter of the last word
 export const colorizeLastWordFirstLetter = (title: string) => {
   // Implementation moved to ColoredHeader component
-}
+};
 
 // Export a default object for backward compatibility if needed
 export default {
@@ -314,4 +340,4 @@ export default {
   faq,
   contact,
   footer,
-}
+};

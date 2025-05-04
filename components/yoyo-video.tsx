@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 export const YoyoVideo = ({ heroVideo }: { heroVideo: string }) => {
   return (
@@ -10,5 +10,5 @@ export const YoyoVideo = ({ heroVideo }: { heroVideo: string }) => {
       muted
       playsInline
     />
-  )
-}
+  );
+};
