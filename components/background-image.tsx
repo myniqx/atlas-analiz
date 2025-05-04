@@ -1,7 +1,6 @@
 import { images } from "@/data/site-content";
 import { ImageFallback } from "./image-fallback";
 
-
 export function BackgroundImage() {
   return (
     <div className="fixed inset-0 w-screen h-screen -z-10 pointer-events-none">

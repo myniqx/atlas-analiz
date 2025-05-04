@@ -6,13 +6,12 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import type React from "react";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 import { AboutUs } from "@/components/sections/about-us";
 import { Hero } from "@/components/sections/hero";
 import { BackgroundImage } from "@/components/background-image";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,7 +54,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-
           <main className="relative">
             <BackgroundImage />
             <Navbar />

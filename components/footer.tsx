@@ -3,8 +3,6 @@ import { Linkedin, Twitter, Instagram } from "lucide-react";
 import { ColoredHeader } from "@/components/colored-header";
 import { contactInfo, footer as content, siteInfo } from "@/data/site-content";
 
-
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
 

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,8 +9,7 @@ import { sendApplicationEmail } from "@/lib/email-service";
 import { useState } from "react";
 
 import { toast } from "sonner";
-const fakeData = true
-
+const fakeData = true;
 
 export const RequestForm = () => {
   const [formData, setFormData] = useState(() => {
@@ -68,14 +67,11 @@ export const RequestForm = () => {
 
       if (result.success) {
         // Show success message
-        toast.success(
-          "Başvurunuz Alındı",
-          {
-            description:
-              "Başvurunuz email olarak gönderildi. En kısa sürede sizinle iletişime geçeceğiz.",
-            duration: 5000,
-          }
-        )
+        toast.success("Başvurunuz Alındı", {
+          description:
+            "Başvurunuz email olarak gönderildi. En kısa sürede sizinle iletişime geçeceğiz.",
+          duration: 5000,
+        });
 
         // Reset form
         setFormData({
@@ -96,14 +92,11 @@ export const RequestForm = () => {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      toast.error(
-        "Teklif gönderilirken hata oluştu.",
-        {
-          description:
-            "Başvurunuz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-          duration: 5000,
-        }
-      );
+      toast.error("Teklif gönderilirken hata oluştu.", {
+        description:
+          "Başvurunuz gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+        duration: 5000,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -171,8 +164,7 @@ export const RequestForm = () => {
 
         <div>
           <Label htmlFor="subject" className="text-sm font-medium">
-            Çalışmanın Konu Başlığı{" "}
-            <span className="text-red-500">*</span>
+            Çalışmanın Konu Başlığı <span className="text-red-500">*</span>
           </Label>
           <Input
             id="subject"
@@ -204,10 +196,7 @@ export const RequestForm = () => {
                 value="tezsiz-yuksek-lisans"
                 id="tezsiz-yuksek-lisans"
               />
-              <Label
-                htmlFor="tezsiz-yuksek-lisans"
-                className="font-normal"
-              >
+              <Label htmlFor="tezsiz-yuksek-lisans" className="font-normal">
                 Tezsiz Yüksek Lisans
               </Label>
             </div>
@@ -216,10 +205,7 @@ export const RequestForm = () => {
                 value="tezli-yuksek-lisans"
                 id="tezli-yuksek-lisans"
               />
-              <Label
-                htmlFor="tezli-yuksek-lisans"
-                className="font-normal"
-              >
+              <Label htmlFor="tezli-yuksek-lisans" className="font-normal">
                 Tezli Yüksek Lisans
               </Label>
             </div>
@@ -321,5 +307,5 @@ export const RequestForm = () => {
         {isSubmitting ? "Gönderiliyor..." : "Gönder"}
       </Button>
     </form>
-  )
-}
+  );
+};

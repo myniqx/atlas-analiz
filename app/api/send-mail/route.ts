@@ -1,15 +1,16 @@
-import ApplicationEmail, { ApplicationFormData } from "@/components/email-template";
-import siteContent, { contactInfo, siteInfo } from "@/data/site-content";
+import ApplicationEmail, {
+  ApplicationFormData,
+} from "@/components/email-template";
+import { contactInfo } from "@/data/site-content";
 import { NextRequest, NextResponse } from "next/server";
-import React from "react";
 
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   const { subject, data: formData } = await request.json();
-  
+
   console.log("POST", subject);
 
   if (!subject || !formData) {
@@ -19,10 +20,9 @@ export async function POST(request: NextRequest) {
     );
   }
 
-
   try {
     const { data, error } = await resend.emails.send({
-      from: 'sandbox@resend.dev', // contactInfo.senderEmail,
+      from: "sandbox@resend.dev", // contactInfo.senderEmail,
       to: contactInfo.contactEmail,
       subject: subject,
       react: ApplicationEmail(formData as ApplicationFormData),
@@ -30,10 +30,7 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.log(error);
-      return NextResponse.json(
-        { error },
-        { status: 500 },
-      );
+      return NextResponse.json({ error }, { status: 500 });
     }
 
     return NextResponse.json(data);
