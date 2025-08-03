@@ -23,7 +23,7 @@ export const seo = {
   description:
     "Tez, makale ve akademik çalışmalarınız için profesyonel danışmanlık hizmetleri sunuyoruz. Akademik başarınızı bir üst seviyeye taşıyın.",
   keywords:
-    "tez danışmanlığı, makale yazımı, istatistiksel analiz, akademik çeviri, intihal kontrolü, literatür taraması",
+    "tez danışmanlığı, makale yazımı, istatistiksel analiz, akademik çeviri, intihal kontrolü, literatür taraması, turnitin uyumlu tez yazımı, tez hazırlama, tez klavuzu hazırlama, tezi klavuza uydurma, makale yazma kuralları, tez düzenleme",
   author: siteInfo.siteName,
   ogTitle: `${siteInfo.siteName} - Akademik Danışmanlık Hizmetleri`,
   ogDescription:
