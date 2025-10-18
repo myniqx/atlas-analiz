@@ -26,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="5J-ao5JNWSuoUDV3Rq4Wt1cM-0w4889pcYJVJidZ2Dk" />
         {/* <!-- Google tag (gtag.js) --> */}
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_ATLAS_ANALIZ && (
           <>
