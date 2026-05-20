@@ -76,8 +76,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {children}
             <Footer />
           </main>
-
-          <Chat />
           <Toaster />
         </ThemeProvider>
       </body>
